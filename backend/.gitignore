@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+dist/
+
+# Environment files
+.env
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Docker
+*.log
