@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: tinyshop_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tiny_webshop
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    build: .
+    environment:
+      DB_USER: tinyshop_user
+      DB_PASS: password
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: tiny_webshop
+    depends_on:
+      - db
+    command: npm run dev
+    ports:
+      - "3000:3000"
