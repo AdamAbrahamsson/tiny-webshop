@@ -49,8 +49,8 @@ jobs:
       - name: Inject real DB credentials
         run: |
           export PGPASSWORD=tmppass
-          psql -h localhost -U tmpuser -d tmpdb -c "ALTER USER tmpuser WITH PASSWORD '${DB_PASS}';"
-          psql -h localhost -U tmpuser -d tmpdb -c "ALTER DATABASE tmpdb OWNER TO ${DB_USER};"
+          psql -h postgres -U tmpuser -d tmpdb -c "ALTER USER tmpuser WITH PASSWORD '${DB_PASS}';"
+          psql -h postgres -U tmpuser -d tmpdb -c "ALTER DATABASE tmpdb OWNER TO ${DB_USER};"
 
       - name: Create .env file for app
         run: |
