@@ -36,3 +36,81 @@
     transform: rotate(360deg);
   }
 }
+
+.Login-container {
+  padding: 3rem;
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: #fafafa;
+}
+
+.Login-container h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.switch-button {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.switch-button:hover {
+  background-color: #005bb5;
+}
+
+.Login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Login-form input {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.Login-form .submit-button {
+  padding: 1rem;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.Login-form .submit-button:hover {
+  background-color: #218838;
+}
+
+/* Backend message styles */
+.backend-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.backend-message.error {
+  color: #d9534f; /* red */
+}
+
+.backend-message.success {
+  color: #28a745; /* green */
+}
+

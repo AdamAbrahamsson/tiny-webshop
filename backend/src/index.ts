@@ -2,9 +2,18 @@ import express from 'express';
 import productRoutes from './routes/products';
 import authRoutes from './routes/auth';
 import orderRoutes from './routes/orders';
+import cors from "cors";
 
 const app = express();
 const PORT = 3000;
+
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // Parsing the incoming request bodies that are in JSON Format 
 app.use(express.json());
