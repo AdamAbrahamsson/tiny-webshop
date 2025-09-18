@@ -1,10 +1,12 @@
+version: "3.9"
+
 services:
   db:
     image: postgres:14
     environment:
-      POSTGRES_USER: tinyshop_user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: tiny_webshop
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
@@ -13,13 +15,25 @@ services:
   app:
     build: .
     environment:
-      DB_USER: tinyshop_user
-      DB_PASS: password
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
       DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: tiny_webshop
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
     depends_on:
       - db
     command: npm run dev
     ports:
       - "3000:3000"
+
+  seed:
+    build: .
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_HOST: db
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      - db
+    command: npx ts-node src/seed.ts

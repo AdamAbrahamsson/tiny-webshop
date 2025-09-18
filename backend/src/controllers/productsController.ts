@@ -3,8 +3,6 @@ import pool from '../db';
 
 // Get all products
 export const getProducts = async (req: Request, res: Response) => {
-  console.log('Hello World — getProducts called'); // <-- check if this runs
-
     
   try {
     const result = await pool.query('SELECT * FROM products ORDER BY created_at DESC');
@@ -13,6 +11,11 @@ export const getProducts = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Database error', details: err });
   }
 };
+
+/////////////////////////////////////////////////////////////
+// All below functions are not implemented in the UI, however
+// it is implemented in postman.
+/////////////////////////////////////////////////////////////
 
 // Get a product by id
 export const getProductById = async (req: Request, res: Response) => {
