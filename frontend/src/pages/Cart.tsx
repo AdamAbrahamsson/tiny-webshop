@@ -60,23 +60,31 @@ const Cart = () => {
     window.dispatchEvent(new Event("cartUpdated")); // Update navbar
   };
 
-  if (cart.length === 0) return <p>Your cart is empty.</p>;
+  if (cart.length === 0) return <p className="empty-cart-message">Your cart is empty.</p>;
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Your Cart</h1>
-      <ul>
+    <div className="cart-container">
+      <h1 className="cart-title">Your Cart</h1>
+      <ul className="cart-list">
         {cart.map(item => (
-          <li key={item.id}>
-            {item.title} - {item.quantity} × {item.price} = {(item.quantity * item.price).toFixed(2)} SEK
+          <li key={item.id} className="cart-item">
+            <div className="cart-item-details">
+              <div className="cart-item-title">{item.title}</div>
+              <div className="cart-item-quantity-price">
+                {item.quantity} × {item.price} SEK = {(item.quantity * item.price).toFixed(2)} SEK
+              </div>
+            </div>
           </li>
         ))}
       </ul>
-      <p><strong>Total:</strong> {total.toFixed(2)} SEK</p>
-      <button onClick={createOrder} style={{ marginRight: "1rem" }}>Create Order</button>
-      <button onClick={clearCart}>Clear Cart</button>
+      <p className="cart-total"><strong>Total:</strong> {total.toFixed(2)} SEK</p>
+      <div className="cart-buttons">
+        <button className="cart-btn create-order-btn" onClick={createOrder}>Create Order</button>
+        <button className="cart-btn clear-cart-btn" onClick={clearCart}>Clear Cart</button>
+      </div>
     </div>
   );
+
 };
 
 export default Cart;

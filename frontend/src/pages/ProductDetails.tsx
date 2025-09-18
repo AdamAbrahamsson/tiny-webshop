@@ -42,27 +42,39 @@ const ProductDetail = () => {
   if (!product) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>{product.title}</h1>
+    <div className="product-detail-container">
+      <h1 className="product-detail-title">{product.title}</h1>
       <img
         src={product.image_url}
         alt={product.title}
-        style={{ width: "400px", height: "200px", objectFit: "cover" }}
+        className="product-detail-image"
       />
-      <p>{product.description}</p>
-      <p><strong>Price:</strong> ${product.price}</p>
-      <p><strong>Stock:</strong> {product.quantity}</p>
+      <p className="product-detail-description">{product.description}</p>
+      <p className="product-detail-price"><strong>Price:</strong> {product.price} SEK</p>
+      <p className="product-detail-stock"><strong>Stock:</strong> {product.quantity}</p>
 
-      <label>
+      <label className="product-detail-qty-label">
         Quantity:
-        <select value={qty} onChange={e => setQty(Number(e.target.value))}>
+        <select
+          value={qty}
+          onChange={e => setQty(Number(e.target.value))}
+          className="product-detail-qty-select"
+        >
           {[1, 2, 3].map(n => (
             <option key={n} value={n}>{n}</option>
           ))}
         </select>
       </label>
-      <br /><br />
-      <button onClick={addToCart}>Add to Cart</button>
+
+      <br />
+      <button
+      className={`product-detail-add-btn ${product.quantity === 0 ? "disabled" : ""}`}
+      onClick={addToCart}
+      disabled={product.quantity === 0}
+      >
+      {product.quantity === 0 ? "Out of Stock" : "Add to Cart"}
+  </button>
+
     </div>
   );
 };

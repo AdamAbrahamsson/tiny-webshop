@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../App.css"; 
 //import "./Products.css";
 
 interface Product {
@@ -20,19 +21,19 @@ const Products: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Products</h2>
-      <ul>
+    <div className="products-container">
+      <h2 className="products-title">Products</h2>
+      <ul className="products-list">
         {products.map((p) => (
-          <li key={p.id} style={{ marginBottom: "20px" }}>
-            <Link to={`/products/${p.id}`}>
+          <li key={p.id} className="product-card">
+            <Link to={`/products/${p.id}`} className="product-link">
               <img
                 src={p.image_url}
                 alt={p.title}
-                style={{ width: "100px", borderRadius: "6px" }}
+                className="product-image"
               />
-              <div>{p.title}</div>
-              <div>{p.price} SEK</div>
+              <div className="product-title">{p.title}</div>
+              <div className="product-price">{p.price} SEK</div>
             </Link>
           </li>
         ))}
