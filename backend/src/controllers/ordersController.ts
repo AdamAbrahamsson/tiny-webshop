@@ -93,3 +93,53 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
     client.release();
   }
 };
+
+// Get all orders for the authenticated user
+export const getOrder = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  const client = await pool.connect();
+
+  try {
+    const userId = req.user?.id;
+    if (!userId) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    // Fetch all orders for the user
+    const ordersResult = await client.query(
+      `SELECT id, order_code, status, total, created_at 
+       FROM orders 
+       WHERE user_id = $1 
+       ORDER BY created_at DESC`,
+      [userId]
+    );
+
+    const orders = [];
+
+    for (const order of ordersResult.rows) {
+      // Fetch items for each order
+      const itemsResult = await client.query(
+        `SELECT oi.id, p.title, oi.quantity, oi.price
+         FROM order_items oi
+         JOIN products p ON oi.product_id = p.id
+         WHERE oi.order_id = $1`,
+        [order.id]
+      );
+
+      orders.push({
+        id: order.id,
+        order_code: order.order_code,
+        status: order.status,
+        total: order.total,
+        created_at: order.created_at,
+        items: itemsResult.rows,
+      });
+    }
+
+    res.status(200).json(orders);
+  } catch (err: any) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Database error', details: err.message });
+  } finally {
+    client.release();
+  }
+};

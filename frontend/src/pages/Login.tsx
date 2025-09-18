@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const Login = () => {
+interface LoginProps {
+  setUserName: (name: string | null) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ setUserName }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,6 +36,8 @@ const Login = () => {
         // Store JWT on login
         if (isLogin && data.token) {
           localStorage.setItem("token", data.token);
+          localStorage.setItem("name", data.name);
+          setUserName(data.name);
         }
       }
     } catch (err) {
@@ -87,3 +93,7 @@ const Login = () => {
 };
 
 export default Login;
+function setUserName(name: any) {
+  throw new Error("Function not implemented.");
+}
+

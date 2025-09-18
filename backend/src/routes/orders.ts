@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import {
   createOrder,
-  getOrders,
-  getOrderById
+  getOrder,
 } from '../controllers/ordersController';
 
 import authMiddleware from "../middleware/authMiddleware";
@@ -14,7 +13,7 @@ const router = Router();
 router.post('/',authMiddleware, createOrder);
 
 // Get all orders (Authentication will be added later)
-//router.get('/', getOrders);
+router.get('/',authMiddleware, getOrder);
 
 // Get a single order by id
 //router.get('/:id', getOrderById);
