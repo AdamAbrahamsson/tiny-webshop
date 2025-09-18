@@ -5,10 +5,13 @@ import {
   getOrderById
 } from '../controllers/ordersController';
 
+import authMiddleware from "../middleware/authMiddleware";
+
+
 const router = Router();
 
 // Create a new order (Authentication will be added later)
-//router.post('/', createOrder);
+router.post('/',authMiddleware, createOrder);
 
 // Get all orders (Authentication will be added later)
 //router.get('/', getOrders);
