@@ -1,15 +1,52 @@
-# Node modules
-node_modules/
+# =====================
+# Node / Dependencies
+# =====================
+# Root
+/node_modules
+/dist
+/.env
 
-# TypeScript build output
-dist/
+# Frontend
+/frontend/node_modules
+/frontend/.pnp
+/frontend/.pnp.js
 
-# Environment files
-.env
-
+# =====================
 # Logs
-npm-debug.log
-yarn-error.log
-
-# Docker
+# =====================
+# Root and frontend
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================
+# Build / Production
+# =====================
+# Root
+/dist
+# Frontend
+/frontend/build
+
+# =====================
+# Testing / Coverage
+# =====================
+/frontend/coverage
+
+# =====================
+# Environment Files
+# =====================
+# Root
+/.env
+# Frontend
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# =====================
+# Misc
+# =====================
+# macOS files
+.DS_Store
+/frontend/.DS_Store
