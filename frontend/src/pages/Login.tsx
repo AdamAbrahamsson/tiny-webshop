@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 interface LoginProps {
@@ -6,6 +7,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ setUserName }) => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,6 +40,7 @@ const Login: React.FC<LoginProps> = ({ setUserName }) => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("name", data.name);
           setUserName(data.name);
+          navigate("/products");
         }
       }
     } catch (err) {
