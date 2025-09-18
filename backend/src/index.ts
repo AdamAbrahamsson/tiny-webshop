@@ -3,10 +3,13 @@ import productRoutes from './routes/products';
 import authRoutes from './routes/auth';
 import orderRoutes from './routes/orders';
 import cors from "cors";
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 const PORT = 3000;
 
+//Enable CORS
 app.use(
   cors({
     origin: "http://localhost:3001",

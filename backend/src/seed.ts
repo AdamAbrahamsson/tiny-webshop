@@ -3,11 +3,11 @@ import pool from './db';
 // Insert three products to populate the database
 
 const products = [
-    { title: 'Playstation 5', description: 'Description for product 1', image_url: 'https://images.ctfassets.net/31h9ykss8g0q/5li1NSdttFEOdN8m8IcTN9/224d5d849435e677ad6ee52c8cb31756/blog_gaming-playstation_16x9.png?w=709&q=80&fm=avif', price: 6990, quantity: 10 },
+    { title: 'Playstation 5', description: 'The latest PlayStation 5 console with ultra-fast SSD, 4K gaming support, and an immersive DualSense controller. Perfect for next-gen gaming experiences.', image_url: 'https://images.ctfassets.net/31h9ykss8g0q/5li1NSdttFEOdN8m8IcTN9/224d5d849435e677ad6ee52c8cb31756/blog_gaming-playstation_16x9.png?w=709&q=80&fm=avif', price: 6990, quantity: 10 },
   
-    { title: 'iphone 17', description: 'Description for product 2', image_url: 'https://swedroid.se/wp-content/uploads/2024/12/iphone-17-pro-render-a-711x441.webp', price: 15000, quantity: 5 },
+    { title: 'iphone 17', description: 'Apple’s newest iPhone 17 with an advanced A19 Bionic chip, all-day battery life, and cutting-edge camera system. Sleek design meets powerful performance.', image_url: 'https://swedroid.se/wp-content/uploads/2024/12/iphone-17-pro-render-a-711x441.webp', price: 15000, quantity: 5 },
 
-    { title: 'Apple Headphones', description: 'Description for product 3', image_url: 'https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg', price: 2999.95, quantity: 20 },
+    { title: 'Apple Headphones', description: 'Premium over-ear Apple headphones with active noise cancellation, high-fidelity sound, and comfortable all-day wear. Designed for music lovers and professionals.', image_url: 'https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg', price: 2999.95, quantity: 20 },
 ];
 
 async function seedProducts() {

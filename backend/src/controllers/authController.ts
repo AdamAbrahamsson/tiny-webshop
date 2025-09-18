@@ -3,7 +3,8 @@ import pool from '../db';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const JWT_SECRET = process.env.JWT_SECRET as string;
+
 
 // Register a new user
 export const registerUser = async (req: Request, res: Response) => {
@@ -62,6 +63,33 @@ export const loginUser = async (req: Request, res: Response) => {
       token,
       name: user.name
      });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+interface AuthenticatedRequest extends Request {
+  user?: { id: string; email: string };
+}
+
+export const deleteUser = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const result = await pool.query(
+      "DELETE FROM users WHERE id = $1 RETURNING id, name, email",
+      [userId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ message: "Your account has been deleted", user: result.rows[0] });
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
