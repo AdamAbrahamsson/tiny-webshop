@@ -41,6 +41,14 @@ jobs:
         run: npm ci
         working-directory: ./backend
 
+      - name: Create .env file
+        run: |
+          echo "DB_USER=${{ secrets.DB_USER }}" >> backend/.env
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> backend/.env
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> backend/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> backend/.env
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> backend/.env  
+
       - name: Start backend server
         run: npm run dev &
         working-directory: ./backend
