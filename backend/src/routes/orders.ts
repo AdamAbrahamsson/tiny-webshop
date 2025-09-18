@@ -8,7 +8,7 @@ import {
 const router = Router();
 
 // Create a new order (Authentication will be added later)
-//router.post('/', createOrder);
+router.post('/', createOrder);
 
 // Get all orders (Authentication will be added later)
 //router.get('/', getOrders);

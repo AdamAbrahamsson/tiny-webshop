@@ -1,6 +1,6 @@
 import express from 'express';
-//import productRoutes from './routes/products';
-//import authRoutes from './routes/auth';
+import productRoutes from './routes/products';
+import authRoutes from './routes/auth';
 import orderRoutes from './routes/orders';
 
 const app = express();
@@ -10,8 +10,8 @@ const PORT = 3000;
 app.use(express.json());
 
 // Routes
-//app.use('/api/products', productRoutes);
-//app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
 
 app.get('/', (req, res) => {
