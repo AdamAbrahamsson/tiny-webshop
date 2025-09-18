@@ -23,12 +23,12 @@ CREATE TABLE users (
 
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,      --autoincrement by postgress
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255) UNIQUE,
     description TEXT,
     image_url TEXT,
     price NUMERIC(10,2) NOT NULL,
     quantity INT NOT NULL DEFAULT 0,
-    created_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW()
 );
 
 -----------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE orders (
     order_code VARCHAR(50) NOT NULL UNIQUE, -- e.g., ORD-2025-001
     status VARCHAR(50) DEFAULT 'pending',
     total NUMERIC(10,2) DEFAULT 0,
-    created_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW()
 );
 
 -----------------------------------------------------------
