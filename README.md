@@ -76,7 +76,7 @@ Navigate to frontend folder:
 
 - Run `docker compose up --build`
 
-- Open a tab in your prowser and paste `http://localhost:3001/`
+- Open a new tab in your browser and paste `http://localhost:3001/`
 
 # Postman API Tests
 
