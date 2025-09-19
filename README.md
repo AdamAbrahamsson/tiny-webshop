@@ -24,7 +24,7 @@ A full-stack e-commerce web application built with React (frontend) and Node.js/
 
 # Environment Variables
 
-  Create .env.example in the backend/ folder first. For example:
+  Create `.env.exampl` in the backend folder first. For example:
 
   `touch backend/.env.example`
 
