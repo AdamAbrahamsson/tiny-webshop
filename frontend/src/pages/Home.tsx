@@ -1,11 +1,12 @@
 import React from "react";
+import webshopImage from "../assets/webshop-image.png"; // Import the image
 
 const Home = () => {
   return (
     <div style={{ textAlign: "center", padding: "2rem" }}>
       <h1>Welcome to Tiny-Webshop</h1>
       <img
-        src="https://shop.tinycloud.games/img/logo_tiny_shop.png"
+        src={webshopImage} // Use the imported image
         alt="Tiny Webshop"
         style={{ marginTop: "2rem" }}
       />
