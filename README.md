@@ -22,6 +22,27 @@ A full-stack e-commerce web application built with React (frontend) and Node.js/
 
 4- Testing: Postman, Newman
 
+# Environment Variables
+
+  Create .env.example in the backend/ folder first. For example:
+
+  `touch backend/.env.example`
+
+  Then open it in your editor and add placeholder values:
+
+    DB_USER=your_db_user
+    DB_PASS=your_db_password
+    DB_NAME=your_db_name
+    DB_PORT=5432
+    JWT_SECRET=your_jwt_secret
+    
+  Now you can safely copy it to `.env`:
+  
+  `cp backend/.env.example backend/.env`
+
+  Edit backend/.env with your real credentials.
+
+
 # Backend (Docker)
 
 Run `cd backend` to navigate to the backend directory.
